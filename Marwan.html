@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مروان نصار — مشاويرك في أمان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14181c;
+    --bg-alt:#1a1f25;
+    --card:#1f262d;
+    --accent:#f2a93b;
+    --accent-dim:rgba(242,169,59,.16);
+    --line:#e9e2d2;
+    --text:#f3f1ec;
+    --muted:#98a1a8;
+    --radius:6px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Tajawal',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Cairo',sans-serif;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    overflow:hidden;
+    padding:80px 0 60px;
+  }
+
+  .headlight{
+    position:absolute;
+    top:-20%;
+    right:-10%;
+    width:70vw;
+    height:70vw;
+    max-width:800px;
+    max-height:800px;
+    background:radial-gradient(circle, var(--accent-dim) 0%, transparent 65%);
+    pointer-events:none;
+  }
+
+  .roadline{
+    position:absolute;
+    bottom:0;
+    right:0;
+    width:100%;
+    height:120px;
+    overflow:hidden;
+    opacity:.5;
+  }
+
+  .roadline svg{
+    width:200%;
+    height:100%;
+  }
+
+  .roadline path{
+    stroke-dasharray:26 22;
+    animation:drive 3.2s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .roadline path{ animation:none; }
+  }
+
+  @keyframes drive{
+    from{ stroke-dashoffset:0; }
+    to{ stroke-dashoffset:-96; }
+  }
+
+  .kicker{
+    color:var(--accent);
+    font-family:'Cairo',sans-serif;
+    font-weight:600;
+    font-size:1.05rem;
+    margin-bottom:18px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.6rem, 8vw, 5rem);
+    font-weight:900;
+    line-height:1.05;
+    max-width:14ch;
+  }
+
+  .hero p{
+    margin-top:22px;
+    font-size:1.15rem;
+    color:var(--muted);
+    max-width:38ch;
+  }
+
+  .hero-actions{
+    margin-top:40px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    font-family:'Cairo',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    padding:15px 30px;
+    border-radius:var(--radius);
+    border:2px solid transparent;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+
+  .btn-solid{
+    background:var(--accent);
+    color:#191308;
+  }
+  .btn-solid:hover{ transform:translateY(-2px); }
+
+  .btn-outline{
+    background:transparent;
+    border-color:#3a4148;
+    color:var(--text);
+  }
+  .btn-outline:hover{ border-color:var(--accent); transform:translateY(-2px); }
+
+  /* ---------- SECTION LABEL ---------- */
+
+  .section{
+    padding:90px 0;
+  }
+
+  .section-head{
+    margin-bottom:44px;
+  }
+
+  .section-head h2{
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    font-weight:800;
+  }
+
+  .section-head p{
+    color:var(--muted);
+    margin-top:10px;
+    max-width:46ch;
+  }
+
+  /* ---------- TICKET / BOOKING FORM ---------- */
+
+  .ticket{
+    background:var(--card);
+    border-radius:10px;
+    position:relative;
+    padding:44px 40px 36px;
+  }
+
+  .ticket::before{
+    content:"";
+    position:absolute;
+    top:0; right:0; left:0;
+    height:14px;
+    background-image: radial-gradient(circle, var(--bg) 5px, transparent 5.5px);
+    background-size: 26px 14px;
+    background-position: top center;
+    background-repeat: repeat-x;
+  }
+
+  .ticket-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px dashed #39414a;
+    padding-bottom:20px;
+    margin-bottom:28px;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .ticket-meta .label{
+    font-family:'Cairo',sans-serif;
+    font-weight:800;
+    font-size:1.2rem;
+  }
+
+  .ticket-meta .tag{
+    font-variant-numeric: tabular-nums;
+    color:var(--accent);
+    font-weight:700;
+    letter-spacing:.5px;
+  }
+
+  form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+  }
+
+  .field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .field.full{
+    grid-column:1 / -1;
+  }
+
+  .field label{
+    font-family:'Cairo',sans-serif;
+    font-size:.92rem;
+    color:var(--muted);
+  }
+
+  .field input,
+  .field textarea{
+    background:var(--bg-alt);
+    border:1px solid #333a41;
+    border-radius:var(--radius);
+    padding:13px 14px;
+    color:var(--text);
+    font-family:'Tajawal',sans-serif;
+    font-size:1rem;
+  }
+
+  .field input:focus,
+  .field textarea:focus{
+    outline:2px solid var(--accent);
+    outline-offset:1px;
+    border-color:var(--accent);
+  }
+
+  .field textarea{
+    resize:vertical;
+    min-height:70px;
+  }
+
+  .ticket-submit{
+    grid-column:1 / -1;
+    margin-top:6px;
+    width:100%;
+    justify-content:center;
+  }
+
+  .ticket-note{
+    grid-column:1/-1;
+    color:var(--muted);
+    font-size:.88rem;
+    margin-top:-8px;
+  }
+
+  @media (max-width:620px){
+    form{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- CONTACT ---------- */
+
+  .contact{
+    background:var(--bg-alt);
+  }
+
+  .contact-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:36px;
+  }
+
+  .contact-number{
+    font-family:'Cairo',sans-serif;
+    font-weight:900;
+    font-size:clamp(2.2rem, 6vw, 3.4rem);
+    direction:ltr;
+    display:inline-block;
+  }
+
+  .contact-sub{
+    color:var(--muted);
+    margin-top:8px;
+  }
+
+  .contact-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  footer{
+    padding:36px 0 50px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.9rem;
+  }
+
+  footer .name{
+    font-family:'Cairo',sans-serif;
+    color:var(--text);
+    font-weight:700;
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="headlight"></div>
+    <div class="wrap">
+      <div class="kicker">مشاوير خاصة — بني سويف</div>
+      <h1>مروان نصار</h1>
+      <p>سواق خاص لمشاويرك. حدد وجهتك وميعادك، وأنا أوصلك في أمان وفي معاد.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-solid">احجز مشوارك</a>
+        <a href="tel:+201019143522" class="btn btn-outline">اتصل دلوقتي</a>
+      </div>
+    </div>
+    <div class="roadline">
+      <svg viewBox="0 0 800 40" preserveAspectRatio="none">
+        <path d="M0,20 H800" stroke="#e9e2d2" stroke-width="3" fill="none"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="section" id="booking">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>احجز مشوارك</h2>
+        <p>املأ البيانات وهتفتح رسالة واتساب جاهزة، ابعتها وهرد عليك على طول.</p>
+      </div>
+
+      <div class="ticket">
+        <div class="ticket-meta">
+          <span class="label">تذكرة مشوار</span>
+          <span class="tag" id="ticketId">#0000</span>
+        </div>
+
+        <form id="rideForm">
+          <div class="field">
+            <label for="from">من (نقطة الانطلاق)</label>
+            <input type="text" id="from" placeholder="مثال: مدينة نصر" required>
+          </div>
+          <div class="field">
+            <label for="to">إلى (الوجهة)</label>
+            <input type="text" id="to" placeholder="مثال: مطار القاهرة" required>
+          </div>
+          <div class="field">
+            <label for="date">التاريخ</label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="field">
+            <label for="time">الساعة</label>
+            <input type="time" id="time" required>
+          </div>
+          <div class="field full">
+            <label for="notes">ملاحظات (اختياري)</label>
+            <textarea id="notes" placeholder="عدد الركاب، شنط، أي تفاصيل تانية"></textarea>
+          </div>
+          <div class="ticket-note">هيتفتح واتساب برسالة فيها بياناتك عشان أأكد لك المشوار.</div>
+          <button type="submit" class="btn btn-solid ticket-submit">تأكيد الحجز عبر واتساب</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact">
+    <div class="wrap contact-inner">
+      <div>
+        <a class="contact-number" href="tel:+201019143522">010 1914 3522</a>
+        <div class="contact-sub">متاح يوميًا لمشاويرك واستفساراتك</div>
+      </div>
+      <div class="contact-actions">
+        <a href="tel:+201019143522" class="btn btn-solid">اتصال مباشر</a>
+        <a href="https://wa.me/201019143522" target="_blank" rel="noopener" class="btn btn-outline">واتساب</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="name">مروان نصار</span> · مشاوير خاصة
+  </footer>
+
+<script>
+  // ticket id from date, just a nice touch
+  document.getElementById('ticketId').textContent =
+    '#' + Math.floor(1000 + Math.random() * 9000);
+
+  document.getElementById('rideForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const from = document.getElementById('from').value.trim();
+    const to = document.getElementById('to').value.trim();
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const notes = document.getElementById('notes').value.trim();
+
+    let msg = `السلام عليكم، عايز أحجز مشوار مع مروان:\n`;
+    msg += `من: ${from}\n`;
+    msg += `إلى: ${to}\n`;
+    msg += `التاريخ: ${date}\n`;
+    msg += `الساعة: ${time}\n`;
+    if(notes) msg += `ملاحظات: ${notes}\n`;
+
+    const url = 'https://wa.me/201019143522?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  });
+</script>
+
+</body>
+</html>
